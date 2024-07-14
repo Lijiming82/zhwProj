@@ -1,13 +1,4 @@
 <?php
-// +----------------------------------------------------------------------
-// | 文件: index.php
-// +----------------------------------------------------------------------
-// | 功能: 提供todo api接口
-// +----------------------------------------------------------------------
-// | 时间: 2021-11-15 16:20
-// +----------------------------------------------------------------------
-// | 作者: rangangwei<gangweiran@tencent.com>
-// +----------------------------------------------------------------------
 
 namespace app\controller;
 
@@ -18,7 +9,7 @@ use think\response\Html;
 use think\response\Json;
 use think\facade\Log;
 
-class Indexbk
+class Indexljm
 {
 
     /**
@@ -28,14 +19,14 @@ class Indexbk
     public function index(): Html
     {
         # html路径: ../view/index.html
-        return response(file_get_contents(dirname(dirname(__FILE__)).'/view/indexbk.html'));
+        return response(file_get_contents(dirname(dirname(__FILE__)).'/view/indexljm.html'));
     }
 
 
     /**
-     * 获取todo list
-     * @return Json
-     */
+    * 获取todo list
+    * @return Json
+    */
     public function getCount(): Json
     {
         try {
@@ -106,4 +97,5 @@ class Indexbk
             return json($res);
         }
     }
+
 }
