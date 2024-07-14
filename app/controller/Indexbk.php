@@ -18,7 +18,7 @@ use think\response\Html;
 use think\response\Json;
 use think\facade\Log;
 
-class Index
+class Indexbk
 {
 
     /**
