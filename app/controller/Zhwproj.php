@@ -15,7 +15,7 @@ class Zhwproj
 {
     public function index()
     {
-        return View::fetch();
+        return response( file_get_contents(dirname(dirname(__FILE__)).'/view/zhwproj/index.html'));
     }
 
     public function adminLogin()
@@ -23,7 +23,7 @@ class Zhwproj
         $admin = trim($_POST['admin']);
         $pass = trim($_POST['pass']);
         if($admin=='admin' and $pass=='lijiming'){
-            return View::fetch();
+            return response( file_get_contents(dirname(dirname(__FILE__)).'/view/zhwproj/admin_login.html'));
         }else{
             return '用户密码校验错';
         }
