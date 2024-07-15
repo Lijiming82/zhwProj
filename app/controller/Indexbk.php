@@ -18,14 +18,14 @@ use think\response\Html;
 use think\response\Json;
 use think\facade\Log;
 
-class Index
+class Indexbk
 {
 
     /**
      * 主页静态页面
      * @return Html
      */
-    public function indexbk(): Html
+    public function index(): Html
     {
         # html路径: ../view/index.html
         return response( file_get_contents(dirname(dirname(__FILE__)).'/view/indexbk.html'));
