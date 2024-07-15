@@ -13,13 +13,20 @@ use think\facade\View;
 class Zhwproj
 //
 {
-    /**
-     * 主页静态页面
-     * @return Html
-     */
-    public function index(): Html
+    public function index()
     {
         return View::fetch();
+    }
+
+    public function adminLogin()
+    {
+        $admin = trim($_POST['admin']);
+        $pass = trim($_POST['pass']);
+        if($admin=='admin' and $pass=='lijiming'){
+            return View::fetch();
+        }else{
+            return '用户密码校验错';
+        }
     }
 
 }
