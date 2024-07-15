@@ -11,7 +11,7 @@
 use think\facade\Route;
 
 // 获取当前计数
-Route::get('/api/count', 'indexljm/getCount');
+Route::get('/api/count', 'indexbk/getCount');
 
 // 更新计数，自增或者清零
-Route::post('/api/count', 'indexljm/updateCount');
+Route::post('/api/count', 'indexbk/updateCount');

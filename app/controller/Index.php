@@ -1,13 +1,4 @@
 <?php
-// +----------------------------------------------------------------------
-// | 文件: index.php
-// +----------------------------------------------------------------------
-// | 功能: 提供todo api接口
-// +----------------------------------------------------------------------
-// | 时间: 2021-11-15 16:20
-// +----------------------------------------------------------------------
-// | 作者: rangangwei<gangweiran@tencent.com>
-// +----------------------------------------------------------------------
 
 namespace app\controller;
 
@@ -28,7 +19,7 @@ class Index
     public function index(): Html
     {
         # html路径: ../view/index.html
-        return response( file_get_contents(dirname(dirname(__FILE__)).'/view/index.html'));
+        return response(file_get_contents(dirname(dirname(__FILE__)).'/view/index.html'));
     }
 
 }
