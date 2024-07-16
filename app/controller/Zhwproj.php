@@ -65,7 +65,6 @@ class Zhwproj
         }
         
         return json($returnData);
-        return json(['openid'=>$openid,'unionid'=>$unionid,'cusCount'=>$cusCount]);
     }
 
 }
