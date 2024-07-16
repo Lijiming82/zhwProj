@@ -60,7 +60,6 @@ class Zhwproj
         {
             $cusdata = $zhwDB->table('cusinfo')->where('openid',$openid)->find();
             $res = $zhwDB->table('cusinfo')->where('openid',$openid)->update(['lastVisit'=>$mytime]);
-            $code = $cusdata['seq'];
             $returnData=$cusdata;
         }
         
