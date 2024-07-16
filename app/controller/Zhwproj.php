@@ -36,7 +36,7 @@ class Zhwproj
     {
         $openid = Request::header('x-wx-openid');
         $unionid = Request::header('x-wx-unionid');
-        $mytime = date('yyyymmdd H:i:s');
+        $mytime = date('Ymd H:i:s');
         $zhwDB=Db::connect('zhwProjDB');
         $cusCount = $zhwDB->table('cusinfo')->where('openid',$openid)->count();
         
