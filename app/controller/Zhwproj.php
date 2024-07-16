@@ -39,7 +39,7 @@ class Zhwproj
         $mytime = date('yyyymmdd H:i:s');
         $zhwDB=Db::connect('zhwProjDB');
         $cusCount = $zhwDB->table('cusinfo')->where('openid',$openid)->count();
-        /*
+        
         if($cusCount==0)//新客户，插入新客户数据
         {
             $code = ['seq'=>-1];
@@ -64,7 +64,7 @@ class Zhwproj
             $returnData=$cusdata;
         }
         
-        return json($returnData);*/
+        return json($returnData);
         return json(['openid'=>$openid,'unionid'=>$unionid,'cusCount'=>$cusCount]);
     }
 
