@@ -53,7 +53,7 @@ class Zhwproj
                 'lastVisit'=>$mytime,
                 'remark'=>$unionid,
             );
-            $res = $zhwDB->table('cusinfo')->data($cusdata)->insert();
+            $res = $zhwDB->table('cusinfo')->insert($cusdata);
             $returnData=$code+$cusdata;
 
         }else//老客户，获取客户信息，并更新客户访问时间
