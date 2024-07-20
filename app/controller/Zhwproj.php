@@ -51,7 +51,10 @@ class Zhwproj
                 'type'=>'G',//G:general
                 'firstVisit'=>$mytime,
                 'lastVisit'=>$mytime,
-                'remark'=>$unionid,
+                'remark'=>'',
+                'birthplace'=>'',
+                'birthlongitude'=>'',
+                'unionid'=>$unionid
             );
             $res = $zhwDB->table('cusinfo')->insert($cusdata);
             $returnData=$code+$cusdata;
