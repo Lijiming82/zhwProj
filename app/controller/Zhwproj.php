@@ -47,14 +47,15 @@ class Zhwproj
                 'openid'=>$openid,
                 'avatar'=>'',
                 'nickname'=>'',
-                'birthday'=>'',
+                'birthday'=>'1900-01-01 00:00',
                 'type'=>'G',//G:general
                 'firstVisit'=>$mytime,
                 'lastVisit'=>$mytime,
                 'remark'=>'',
-                'birthplace'=>'',
+                'unionid'=>$unionid,
+                'birthplace'=>'北京市,北京市',
                 'birthlongitude'=>'',
-                'unionid'=>$unionid
+                'gender'=>'0' //0-男，1-女
             );
             $res = $zhwDB->table('cusinfo')->insert($cusdata);
             $returnData=$code+$cusdata;
@@ -68,5 +69,7 @@ class Zhwproj
         
         return json($returnData);
     }
+
+    
 
 }
