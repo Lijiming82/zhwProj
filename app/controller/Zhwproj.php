@@ -75,20 +75,21 @@ class Zhwproj
         $updatedata = Request::post();
         $openid = Request::param('x-wx-openid');
         $zhwDB = Db::connect('zhwProjDB');
+        $ret = array('code'=>0,'errmsg'=>'');
 
         $res = $zhwDB->table('cusinfo')->where('openid',$openid)->update($updatedata);
 
         if($res ==1){//更新数据记录数 为1
             //更新成功
-            $updatedata['code']=-1;
-            $updatedata['errmsg']='客户信息更新成功';
+            $ret['code']=-1;
+            $ret['errmsg']='客户信息更新成功';
         }else{
             //更新失败
-            $updatedata['code']=101;
-            $updatedata['errmsg']='数据更新失败||'+$res;
+            $ret['code']=101;
+            $ret['errmsg']='数据更新失败||'+$res;
         }
 
-        $res_json = json_encode($updatedata,JSON_UNESCAPED_UNICODE);
+        $res_json = json_encode($ret,JSON_UNESCAPED_UNICODE);
 
         return $res_json; //json格式，其中code为返回码（0-成功，-1测试，其他失败）
     }
