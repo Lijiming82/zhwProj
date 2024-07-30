@@ -73,7 +73,7 @@ class Zhwproj
     public function wxminiappSaveUsrInfo(){
         //post 返回json
         $mydata = Request::post();
-        //$mydata['code']=-1;//测试
+        $mydata['code']=-1;//测试
 
         $res_json = json_encode($mydata,JSON_UNESCAPED_UNICODE);
 
