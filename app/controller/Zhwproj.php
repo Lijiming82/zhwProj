@@ -78,6 +78,7 @@ class Zhwproj
         $ret = array('code'=>0,'errmsg'=>'');
 
         $res = $zhwDB->table('cusinfo')->where('openid',$openid)->update($updatedata);
+        $ret['test']=$res;
 
         if($res ==1){//更新数据记录数 为1
             //更新成功
