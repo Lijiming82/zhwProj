@@ -82,7 +82,7 @@ class Zhwproj
 
         if($res ==1){//更新数据记录数 为1
             //更新成功
-            $ret['code']=-1;
+            $ret['code']=0;
             $ret['errmsg']='客户信息更新成功';
         }else{
             //更新失败
