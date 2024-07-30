@@ -75,14 +75,14 @@ class Zhwproj
         $updatedata = Request::post();
         $openid = Request::header('x-wx-openid');
         $zhwDB = Db::connect('zhwProjDB');
-        $ret = array('code'=>0,'errmsg'=>'');//默认是成功及空串
+        $ret = array('code'=>1,'errmsg'=>'');//默认是成功及空串，1-成功，-1测试，其他失败
 
         $res = $zhwDB->table('cusinfo')->where('openid',$openid)->update($updatedata);
 
 
         if($res ==1){//更新数据记录数 为1
             //更新成功
-            $ret['code']=0;
+            $ret['code']=1;
             $ret['errmsg']='客户信息更新成功';
         }else{
             //更新失败
