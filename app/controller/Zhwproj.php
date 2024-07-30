@@ -72,11 +72,23 @@ class Zhwproj
 
     public function wxminiappSaveUsrInfo(){
         //post 返回json
-        $mydata = Request::post();
-        $mydata['code']=-1;//测试
+        $updatedata = Request::post();
+        $openid = Request::param('x-wx-openid');
+        $zhwDB = Db::connect('zhwProjDB');
 
-        $res_json = json_encode($mydata,JSON_UNESCAPED_UNICODE);
+        $res = $zhwDB->table('cusinfo')->where('openid',$openid)->update($updatedata);
 
+        if($res ==1){//更新数据记录数 为1
+            //更新成功
+            $updatedata['code']=-1;
+            $updatedata['errmsg']='客户信息更新成功';
+        }else{
+            //更新失败
+            $updatedata['code']=101;
+            $updatedata['errmsg']='数据更新失败||'+$res;
+        }
+
+        $res_json = json_encode($updatedata,JSON_UNESCAPED_UNICODE);
 
         return $res_json; //json格式，其中code为返回码（0-成功，-1测试，其他失败）
     }
