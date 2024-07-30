@@ -94,7 +94,7 @@ class Zhwproj
         $res_json = json_encode($ret,JSON_UNESCAPED_UNICODE);
 
 
-        return $res_json; //json格式，其中code为返回码（0-成功，-1测试，其他失败）
+        return $res_json; //json格式，其中code为返回码（1-成功，-1测试，其他失败）
     }
     
 
