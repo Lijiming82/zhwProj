@@ -76,7 +76,7 @@ class Zhwproj
         $openid = Request::header('x-wx-openid');
         $zhwDB = Db::connect('zhwProjDB');
         $ret = array('code'=>0,'errmsg'=>'');
-
+/*
         $res = $zhwDB->table('cusinfo')->where('openid',$openid)->update($updatedata);
 
         $ret['test']=$res;
@@ -89,7 +89,7 @@ class Zhwproj
             //更新失败
             $ret['code']=101;
             $ret['errmsg']='数据更新失败||'+$res;
-        }
+        }*/
 
         $res_json = json_encode($ret,JSON_UNESCAPED_UNICODE);
 
