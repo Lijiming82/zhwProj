@@ -73,11 +73,12 @@ class Zhwproj
     public function wxminiappSaveUsrInfo(){
         //post 返回json
         $updatedata = Request::post();
-        $openid = Request::param('x-wx-openid');
+        $openid = Request::headr('x-wx-openid');
         $zhwDB = Db::connect('zhwProjDB');
         $ret = array('code'=>0,'errmsg'=>'');
 
         $res = $zhwDB->table('cusinfo')->where('openid',$openid)->update($updatedata);
+
         $ret['test']=$res;
 
         if($res ==1){//更新数据记录数 为1
