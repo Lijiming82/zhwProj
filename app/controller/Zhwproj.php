@@ -91,7 +91,7 @@ class Zhwproj
             $ret['errmsg']='数据更新失败||'+$res;
         }*/
 
-        $res_json = json_encode($ret,JSON_UNESCAPED_UNICODE);
+        $res_json = json_encode($updatedata,JSON_UNESCAPED_UNICODE);
 
         return $res_json; //json格式，其中code为返回码（0-成功，-1测试，其他失败）
     }
