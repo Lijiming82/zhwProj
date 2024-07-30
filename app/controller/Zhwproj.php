@@ -70,6 +70,16 @@ class Zhwproj
         return json($returnData);
     }
 
+    public function wxminiappSaveUsrInfo(){
+        //post 返回json
+        $mydata = $_POST;
+        $mydata['code']=-1;
+
+        $res_json = json_encode($mydata,JSON_UNESCAPED_UNICODE);
+
+
+        return $res_json; //json格式，其中code为返回码（0-成功，-1测试，其他失败）
+    }
     
 
 }
