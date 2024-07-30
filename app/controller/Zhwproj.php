@@ -78,7 +78,9 @@ class Zhwproj
         $ret = array('code'=>0,'errmsg'=>'');
 
         //$res = $zhwDB->table('cusinfo')->where('openid',$openid)->update($updatedata);
-        $res = $zhwDB->table('cusinfo')->where('openid',$openid)->count();
+
+        $res = 1;
+
 
         if($res ==1){//更新数据记录数 为1
             //更新成功
@@ -91,6 +93,8 @@ class Zhwproj
         }
 
         $res_json = json_encode($ret,JSON_UNESCAPED_UNICODE);
+
+        var_dump($updatedata);
 
         return $res_json; //json格式，其中code为返回码（0-成功，-1测试，其他失败）
     }
