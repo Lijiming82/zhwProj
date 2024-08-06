@@ -140,7 +140,7 @@ class Zhwproj
               var_dump('.....');
               var_dump($urldata);
               var_dump('.....');
-              var_dump($urldata['file_list'][3]->download_url);
+              var_dump(json_decode($urldata['file_list'][3])['download_url']);
               var_dump('.....');
 
               //for($i=0;$i<$j;$i++){
