@@ -104,13 +104,49 @@ class Zhwproj
         if(!is_null($openid)){
             $zhwDB = Db::connect('zhwProjDB');
             $redata['code']=1;
+            $fileurlparam['env']='prod-9gg6q4yc21bb3fdd';
+            $i=0;
 
+            $j = $zhwDB->table('layouts')->where('sta','1')->count();
+            
             $res = $zhwDB->table('layouts')->where('sta','1')->select();
 
-            foreach($res as $rec){
+            for($i=0;$i<$j;$i++){
                 //
-                $redata['layouts'][$rec['room']][$rec['type']]=$rec['fileid'];
+                $redata['layouts'][$res[$i]['room']][$res[$i]['type']]['fileid']=$res[$i]['fileid'];
+                $fileurlparam['file_list'][$i]['fileid']=$res[$i]['fileid'];
             }
+
+            var_dump($fileurlparam);
+
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'http://api.weixin.qq.com/tcb/batchdownloadfile',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => json_encode($fileurlparam),
+                CURLOPT_HTTPHEADER => array(
+                  'Content-Type: application/json'
+                ),
+              ));
+              $response = curl_exec($curl);
+              curl_close($curl);
+
+              var_dump($response);
+
+              $urldata = json_decode($response);
+
+              for($i=0;$i<$j;$i++){
+                //
+                $redata['layouts'][$res[$i]['room']][$res[$i]['type']]['fileurl']=$urldata['file_list'][$i]['download_url'];
+              }
+              
+              var_dump($redata);
         }
 
         $redata_json  = json_encode($redata);
