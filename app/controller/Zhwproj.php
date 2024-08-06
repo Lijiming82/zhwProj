@@ -101,6 +101,8 @@ class Zhwproj
         $openid = Request::header('x-wx-openid');
         $redata['code']=0;
 
+        var_dump($openid);
+        
         if(!is_null($openid)){
             $zhwDB = Db::connect('zhwProjDB');
             $redata['code']=1;
