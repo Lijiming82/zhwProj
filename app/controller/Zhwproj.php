@@ -98,7 +98,7 @@ class Zhwproj
     }
     
     public function wxminiappGetLayouts(){
-        $openid = Request::header('x-wx.openid');
+        $openid = Request::header('x-wx-openid');
         $redata['code']=0;
 
         if(!is_null($openid)){
@@ -113,7 +113,7 @@ class Zhwproj
             }
 
             var_dump($redata);   
-            
+
         }
 
         $redata_json  = json_encode($redata);
