@@ -140,7 +140,7 @@ class Zhwproj
               var_dump('.....');
               var_dump($urldata);
               var_dump('.....');
-              $mytemp = $urldata['file_list'][3];
+              $mytemp = $urldata['file_list'][3].['fileid'];
               var_dump($mytemp);
               var_dump('.....');
 
