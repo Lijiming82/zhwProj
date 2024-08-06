@@ -99,21 +99,26 @@ class Zhwproj
     
     public function wxminiappGetLayouts(){
         $openid = Request::header('x-wx.openid');
-        $zhwDB = Db::connect('zhwProjDB');
-        $redata = [];
+        $redata['code']=0;
 
-        $res = $zhwDB->table('layouts')->where('sta','1')->select();
+        if(!is_null($openid)){
+            $zhwDB = Db::connect('zhwProjDB');
+            $redata['code']=1;
 
-        foreach($res as $rec){
-            //
-            $redata[$rec['room']][$rec['type']]=$rec[fileid];
+            $res = $zhwDB->table('layouts')->where('sta','1')->select();
+
+            foreach($res as $rec){
+                //
+                $redata['layouts'][$rec['room']][$rec['type']]=$rec['fileid'];
+            }
+
+            var_dump($redata);   
+            
         }
 
-        var_dump($redata);
-
         $redata_json  = json_encode($redata);
-        
         return $redata_json;
+        
     }
 
 }
