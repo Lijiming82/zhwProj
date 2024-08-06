@@ -138,10 +138,9 @@ class Zhwproj
               $urldata = json_decode($response);
 
               for($i=0;$i<$j;$i++){
-                $redata['layouts'][$res[$i]['room']][$res[$i]['type']]['fileurl']=$urldata->file_list[$i]->download_url;
+                $redata['layouts'][$res[$i]['room']][$res[$i]['type']]['fileurl']=$urldata->file_list[$i]->download_url;//object内容访问使用 -> 数组用索引值或下标
               }
               
-              var_dump($redata);
         }
 
         $redata_json  = json_encode($redata);
