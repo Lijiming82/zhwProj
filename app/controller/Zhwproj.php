@@ -137,18 +137,11 @@ class Zhwproj
 
               $urldata = json_decode($response);
 
-              var_dump('.....');
-              var_dump($urldata);
-              var_dump('.....');
-              $mytemp = $urldata->file_list[3]->fileid;
-              var_dump($mytemp);
-              var_dump('.....');
-
-              //for($i=0;$i<$j;$i++){
-              //  $redata['layouts'][$res[$i]['room']][$res[$i]['type']]['fileurl']=$urldata['file_list'][$i]['download_url'];
-              //}
+              for($i=0;$i<$j;$i++){
+                $redata['layouts'][$res[$i]['room']][$res[$i]['type']]['fileurl']=$urldata->file_list[$i]->download_url;
+              }
               
-              //var_dump($redata);
+              var_dump($redata);
         }
 
         $redata_json  = json_encode($redata);
