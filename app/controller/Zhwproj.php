@@ -108,7 +108,7 @@ class Zhwproj
             $i=0;
 
             $j = $zhwDB->table('layouts')->where('sta','1')->count();
-            
+
             $res = $zhwDB->table('layouts')->where('sta','1')->select();
 
             for($i=0;$i<$j;$i++){
@@ -116,8 +116,6 @@ class Zhwproj
                 $redata['layouts'][$res[$i]['room']][$res[$i]['type']]['fileid']=$res[$i]['fileid'];
                 $fileurlparam['file_list'][$i]['fileid']=$res[$i]['fileid'];
             }
-
-            var_dump($fileurlparam);
 
             $curl = curl_init();
             curl_setopt_array($curl, array(
@@ -137,9 +135,9 @@ class Zhwproj
               $response = curl_exec($curl);
               curl_close($curl);
 
-              var_dump($response);
-
               $urldata = json_decode($response);
+
+              var_dump($urldata);
 
               for($i=0;$i<$j;$i++){
                 //
