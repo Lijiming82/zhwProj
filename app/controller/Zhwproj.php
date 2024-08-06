@@ -97,5 +97,23 @@ class Zhwproj
         return $res_json; //json格式，其中code为返回码（1-成功，-1测试，其他失败）
     }
     
+    public function wxminiappGetLayouts(){
+        $openid = Request::header('x-wx.openid');
+        $zhwDB = Db::connect('zhwProjDB');
+        $redata = [];
+
+        $res = $zhwDB->table('layouts')->where('sta','1')->select();
+
+        foreach($res as $rec){
+            //
+            $redata[$rec['room']][$rec['type']]=$rec[fileid];
+        }
+
+        var_dump($redata);
+
+        $redata_json  = json_encode($redata);
+        
+        return $redata_json;
+    }
 
 }
