@@ -183,7 +183,7 @@ class Zhwproj
 
             //
             $degree = $inputdata['degree'];
-            $dir = mydir($degree);
+            $dir = $this->mydir($degree);
 
             $res = $zhwDB->table('zibai1')->where('dir',$dir)->find();
 
