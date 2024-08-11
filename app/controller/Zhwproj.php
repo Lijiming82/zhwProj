@@ -154,17 +154,17 @@ class Zhwproj
             return '1';//北，1
         }elseif($degree>20&&$degree<70){
             return '8';//东北 8
-        }elseif($degree>20&&$degree<70){
+        }elseif($degree>=70&&$degree<=110){
             return '3';//东 3
-        }elseif($degree>20&&$degree<70){
+        }elseif($degree>110&&$degree<160){
             return '4';//东南 4
-        }elseif($degree>20&&$degree<70){
+        }elseif($degree>=160&&$degree<=200){
             return '9';//南 9
-        }elseif($degree>20&&$degree<70){
+        }elseif($degree>200&&$degree<250){
             return '2';//西南 2
-        }elseif($degree>20&&$degree<70){
+        }elseif($degree>=250&&$degree<=290){
             return '7';//西 7
-        }elseif($degree>20&&$degree<70){
+        }elseif($degree>290&&$degree<340){
             return '6';//西北 6
         }
 
