@@ -148,4 +148,52 @@ class Zhwproj
         
     }
 
+    private function dir($degree){
+
+        if($degree>=340||$degree<=20){
+            return '1';//北，1
+        }elseif($degree>20&&$degree<70){
+            return '8';//东北 8
+        }elseif($degree>20&&$degree<70){
+            return '3';//东 3
+        }elseif($degree>20&&$degree<70){
+            return '4';//东南 4
+        }elseif($degree>20&&$degree<70){
+            return '9';//南 9
+        }elseif($degree>20&&$degree<70){
+            return '2';//西南 2
+        }elseif($degree>20&&$degree<70){
+            return '7';//西 7
+        }elseif($degree>20&&$degree<70){
+            return '6';//西北 6
+        }
+
+    }
+
+    public function fengshuiA(){
+        //紫白三元，财耀、魁星
+        $openid = Request::header('x-wx-openid');
+        $redata['code']=0;
+        $inputdata = Request::post();
+
+        if(!is_null($openid)){
+            $zhwDB = Db::connect('zhwProjDB');
+            $redata['code']=1;
+
+            //
+            $degree = $inputdata['degree'];
+            $dir = dir($degree);
+
+            $res = $zhwDB->table('zibai1')->where('dir',$dir)->find();
+
+            $redata['career']=$res['career'];
+            $redata['rich']=$res['rich'];
+
+        }
+
+        $redata_json  = json_encode($redata);
+        return $redata_json;
+    }
+
+
 }
