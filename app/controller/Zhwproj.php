@@ -148,7 +148,7 @@ class Zhwproj
         
     }
 
-    private function dir($degree){
+    private function mydir($degree){
 
         if($degree>=340||$degree<=20){
             return '1';//北，1
@@ -183,7 +183,7 @@ class Zhwproj
 
             //
             $degree = $inputdata['degree'];
-            $dir = dir($degree);
+            $dir = mydir($degree);
 
             $res = $zhwDB->table('zibai1')->where('dir',$dir)->find();
 
