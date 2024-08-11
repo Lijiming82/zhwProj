@@ -178,6 +178,7 @@ class Zhwproj
 
         var_dump($inputdata);
 
+        /*
         if(!is_null($openid)){
             $zhwDB = Db::connect('zhwProjDB');
             $redata['code']=1;
@@ -191,7 +192,7 @@ class Zhwproj
             $redata['career']=$res['career'];
             $redata['rich']=$res['rich'];
 
-        }
+        }*/
 
         $redata_json  = json_encode($redata);
         return $redata_json;
