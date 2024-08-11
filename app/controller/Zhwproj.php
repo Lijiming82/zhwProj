@@ -176,6 +176,8 @@ class Zhwproj
         $redata['code']=0;
         $inputdata = Request::post();
 
+        var_dump($inputdata);
+
         if(!is_null($openid)){
             $zhwDB = Db::connect('zhwProjDB');
             $redata['code']=1;
