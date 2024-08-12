@@ -196,5 +196,36 @@ class Zhwproj
         return $redata_json;
     }
 
+    public function fengshuiB(){
+        //阳宅三要，生气、延年、天医、六煞、祸害、五鬼、绝命、伏位
+        $openid = Request::header('x-wx-openid');
+        $redata['code']=0;
+        $inputdata = Request::post();
+
+        
+        if(!is_null($openid)){
+            $zhwDB = Db::connect('zhwProjDB');
+            $redata['code']=1;
+
+            //
+            $degree = $inputdata['degree'];
+            $dir = $this->mydir($degree);
+
+            $res = $zhwDB->table('yangzhai1')->where('xiang',$dir)->find();
+
+            $redata['sheng']=$res['sheng'];
+            $redata['yan']=$res['yan'];
+            $redata['tian']=$res['tian'];
+            $redata['liu']=$res['liu'];
+            $redata['huo']=$res['huo'];
+            $redata['wu']=$res['wu'];
+            $redata['jue']=$res['jue'];
+            $redata['fu']=$res['fu'];
+
+        }
+
+        $redata_json  = json_encode($redata);
+        return $redata_json;
+    }
 
 }
