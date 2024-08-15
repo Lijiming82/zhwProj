@@ -187,7 +187,7 @@ class Zhwproj
             $redata=array('B'=>3,'C'=>4,'D'=>9,'E'=>2,'F'=>7,'G'=>6,'H'=>1,'I'=>8);
             return $redata;//东 3
         }elseif($degree>112.5&&$degree<157.5){
-            $redata=array('B'=>4,'C'=>9,'D'=>2,'E'=>7,'F'=>6,'G'=>1,'H'=>8,'I'=>8);
+            $redata=array('B'=>4,'C'=>9,'D'=>2,'E'=>7,'F'=>6,'G'=>1,'H'=>8,'I'=>3);
             return $redata;//东南 4
         }elseif($degree>=157.5&&$degree<=202.5){
             $redata=array('B'=>9,'C'=>2,'D'=>7,'E'=>6,'F'=>1,'G'=>8,'H'=>3,'I'=>4);
