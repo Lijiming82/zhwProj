@@ -11,6 +11,7 @@ use think\facade\View;
 use think\facade\Request;
 use think\facade\Db;
 
+use function PHPSTORM_META\elementType;
 
 class Zhwproj
 //
@@ -149,25 +150,222 @@ class Zhwproj
     }
 
     private function mydir($degree){
+        //给出方向所对应的数字
+        //向
 
-        if($degree>=340||$degree<=20){
+        if($degree>=337.5||$degree<=22.5){
             return '1';//北，1
-        }elseif($degree>20&&$degree<70){
+        }elseif($degree>22.5&&$degree<67.5){
             return '8';//东北 8
-        }elseif($degree>=70&&$degree<=110){
+        }elseif($degree>=67.5&&$degree<=112.5){
             return '3';//东 3
-        }elseif($degree>110&&$degree<160){
+        }elseif($degree>112.5&&$degree<157.5){
             return '4';//东南 4
-        }elseif($degree>=160&&$degree<=200){
+        }elseif($degree>=157.5&&$degree<=202.5){
             return '9';//南 9
-        }elseif($degree>200&&$degree<250){
+        }elseif($degree>202.5&&$degree<247.5){
             return '2';//西南 2
-        }elseif($degree>=250&&$degree<=290){
+        }elseif($degree>=247.5&&$degree<=292.5){
             return '7';//西 7
-        }elseif($degree>290&&$degree<340){
+        }elseif($degree>292.5&&$degree<337.5){
             return '6';//西北 6
         }
 
+    }
+
+    private function mydir2($degree){
+
+        //输入角度（朝向的角度），给出排列数字BCDEFGHI
+
+        if($degree>=337.5||$degree<=22.5){
+            $redata=array(['B'=>1,'C'=>8,'D'=>3,'E'=>4,'F'=>9,'G'=>2,'H'=>7,'I'=>6]);
+            return $redata;//北，1
+        }elseif($degree>22.5&&$degree<67.5){
+            $redata=array(['B'=>8,'C'=>3,'D'=>4,'E'=>9,'F'=>2,'G'=>7,'H'=>6,'I'=>1]);
+            return $redata;//东北 8
+        }elseif($degree>=67.5&&$degree<=112.5){
+            $redata=array(['B'=>3,'C'=>4,'D'=>9,'E'=>2,'F'=>7,'G'=>6,'H'=>1,'I'=>8]);
+            return $redata;//东 3
+        }elseif($degree>112.5&&$degree<157.5){
+            $redata=array(['B'=>4,'C'=>9,'D'=>2,'E'=>7,'F'=>6,'G'=>1,'H'=>8,'I'=>8]);
+            return $redata;//东南 4
+        }elseif($degree>=157.5&&$degree<=202.5){
+            $redata=array(['B'=>9,'C'=>2,'D'=>7,'E'=>6,'F'=>1,'G'=>8,'H'=>3,'I'=>4]);
+            return $redata;//南 9
+        }elseif($degree>202.5&&$degree<247.5){
+            $redata=array(['B'=>2,'C'=>7,'D'=>6,'E'=>1,'F'=>8,'G'=>3,'H'=>4,'I'=>9]);
+            return $redata;//西南 2
+        }elseif($degree>=247.5&&$degree<=292.5){
+            $redata=array(['B'=>7,'C'=>6,'D'=>1,'E'=>8,'F'=>3,'G'=>4,'H'=>9,'I'=>2]);
+            return $redata;//西 7
+        }elseif($degree>292.5&&$degree<337.5){
+            $redata=array(['B'=>6,'C'=>1,'D'=>8,'E'=>3,'F'=>4,'G'=>9,'H'=>2,'I'=>7]);
+            return $redata;//西北 6
+        }
+    }
+    private function shan24($degree){
+        //根据角度，给出24山，天3 地1 人2，阴-1 阳1 标识
+        if($degree>=337.5&&$degree<352.5){
+            //
+            $retdata=[1,'壬',1,1,'丙'];
+            return $retdata;
+        }elseif($degree>=352.5||$degree<7.5){
+            //
+            $retdata=[1,'子',3,-1,'午'];
+            return $retdata;
+        }elseif($degree>=7.5&&$degree<22.5){
+            //
+            $retdata=[1,'癸',2,-1,'丁'];
+            return $retdata;
+        }elseif($degree>=22.5&&$degree<37.5){
+            //
+            $retdata=[8,'丑',1,-1,'未'];
+            return $retdata;
+        }elseif($degree>=37.5&&$degree<52.5){
+            //
+            $retdata=[8,'艮',3,1,'坤'];
+            return $retdata;
+        }elseif($degree>=52.5&&$degree<67.5){
+            //
+            $retdata=[8,'寅',2,1,'申'];
+            return $retdata;
+        }elseif($degree>=67.5&&$degree<82.5){
+            //
+            $retdata=[3,'甲',1,1,'庚'];
+            return $retdata;
+        }elseif($degree>=82.5&&$degree<97.5){
+            //
+            $retdata=[3,'卯',3,-1,'酉'];
+            return $retdata;
+        }elseif($degree>=97.5&&$degree<112.5){
+            //
+            $retdata=[3,'乙',2,-1,'辛'];
+            return $retdata;
+        }elseif($degree>=112.5&&$degree<127.5){
+            //
+            $retdata=[4,'辰',1,-1,'戌'];
+            return $retdata;
+        }elseif($degree>=127.5&&$degree<142.5){
+            //
+            $retdata=[4,'巽',3,1,'乾'];
+            return $retdata;
+        }elseif($degree>=142.5&&$degree<157.5){
+            //
+            $retdata=[4,'巳',2,1,'亥'];
+            return $retdata;
+        }elseif($degree>=157.5&&$degree<172.5){
+            //
+            $retdata=[9,'丙',1,1,'壬'];
+            return $retdata;
+        }elseif($degree>=172.5&&$degree<187.5){
+            //
+            $retdata=[9,'午',3,-1,'子'];
+            return $retdata;
+        }elseif($degree>=187.5&&$degree<202.5){
+            //
+            $retdata=[9,'丁',2,-1,'癸'];
+            return $retdata;
+        }elseif($degree>=202.5&&$degree<217.5){
+            //
+            $retdata=[2,'未',1,-1,'丑'];
+            return $retdata;
+        }elseif($degree>=217.5&&$degree<232.5){
+            //
+            $retdata=[2,'坤',3,1,'艮'];
+            return $retdata;
+        }elseif($degree>=232.5&&$degree<247.5){
+            //
+            $retdata=[2,'申',2,1,'寅'];
+            return $retdata;
+        }elseif($degree>=247.5&&$degree<262.5){
+            //
+            $retdata=[7,'庚',1,1,'甲'];
+            return $retdata;
+        }elseif($degree>=262.5&&$degree<277.5){
+            //
+            $retdata=[7,'酉',3,-1,'卯'];
+            return $retdata;
+        }elseif($degree>=277.5&&$degree<292.5){
+            //
+            $retdata=[7,'辛',2,-1,'乙'];
+            return $retdata;
+        }elseif($degree>=292.5&&$degree<307.5){
+            //
+            $retdata=[6,'戌',1,-1,'辰'];
+            return $retdata;
+        }elseif($degree>=307.5&&$degree<322.5){
+            //
+            $retdata=[6,'乾',3,1,'巽'];
+            return $retdata;
+        }else{
+            //322.5-337.5
+            $retdata=[6,'亥',2,1,'巳'];
+            return $retdata;
+        }
+    }
+
+    private function pan1($zhong,$basePan){
+        //顺飞排盘
+
+        $retdata['Z']=$zhong;
+
+        $a = ($basePan['B']+$zhong-5) % 9;
+        $retdata['B']= $a>0?$a:$a+9;
+
+        $a = ($basePan['C']+$zhong-5) % 9;
+        $retdata['C']= $a>0?$a:$a+9;
+
+        $a = ($basePan['D']+$zhong-5) % 9;
+        $retdata['D']= $a>0?$a:$a+9;
+
+        $a = ($basePan['E']+$zhong-5) % 9;
+        $retdata['E']= $a>0?$a:$a+9;
+
+        $a = ($basePan['F']+$zhong-5) % 9;
+        $retdata['F']= $a>0?$a:$a+9;
+
+        $a = ($basePan['G']+$zhong-5) % 9;
+        $retdata['G']= $a>0?$a:$a+9;
+
+        $a = ($basePan['H']+$zhong-5) % 9;
+        $retdata['H']= $a>0?$a:$a+9;
+
+        $a = ($basePan['I']+$zhong-5) % 9;
+        $retdata['I']= $a>0?$a:$a+9;
+
+        return $retdata;
+    }
+
+    private function pan2($zhong,$basePan){
+        //逆飞排盘
+
+        $retdata['Z']=$zhong;
+
+        $a = ($basePan['B']+$zhong-5) % 9;
+        $retdata['F']= $a>0?$a:$a+9;
+
+        $a = ($basePan['C']+$zhong-5) % 9;
+        $retdata['G']= $a>0?$a:$a+9;
+
+        $a = ($basePan['D']+$zhong-5) % 9;
+        $retdata['H']= $a>0?$a:$a+9;
+
+        $a = ($basePan['E']+$zhong-5) % 9;
+        $retdata['I']= $a>0?$a:$a+9;
+
+        $a = ($basePan['F']+$zhong-5) % 9;
+        $retdata['B']= $a>0?$a:$a+9;
+
+        $a = ($basePan['G']+$zhong-5) % 9;
+        $retdata['C']= $a>0?$a:$a+9;
+
+        $a = ($basePan['H']+$zhong-5) % 9;
+        $retdata['D']= $a>0?$a:$a+9;
+
+        $a = ($basePan['I']+$zhong-5) % 9;
+        $retdata['E']= $a>0?$a:$a+9;
+
+        return $retdata;
     }
 
     public function fengshuiA(){
@@ -226,6 +424,79 @@ class Zhwproj
 
         $redata_json  = json_encode($redata);
         return $redata_json;
+    }
+
+    public function fengshuiC(){
+        //飞星断略，按照年运、向、山，分别飞星（含顺、逆飞），输出每个位置的数字
+        $openid = Request::header('x-wx-openid');
+        $redata['code']=0;
+        $inputdata = Request::post();
+
+        
+        if(!is_null($openid)){
+            $zhwDB = Db::connect('zhwProjDB');
+            $redata['code']=1;
+
+            //
+            $degree = $inputdata['degree'];
+            $a = $inputdata['timeIndex'];
+
+            if($a==2){
+                $yfortune=8;
+            }elseif($a==3){
+                $yfortune=9;
+            }elseif($a==1){
+                $yfortune=7;
+            }elseif($a==0){
+                $yfortune=6;
+            }
+
+            $basePan = $this->mydir2($degree);//经过角度偏转的元旦盘
+            $sylong= $this->shan24($degree);//获取24山和三元龙信息，$sylong[0],$sylong[2]
+            $yearPan = $this->pan1($yfortune,$basePan);//年运顺飞排盘
+            $xiang = $yearPan['B'];
+            $shan = $yearPan['F'];
+
+            if($xiang!=5){
+                //
+                $res = $zhwDB->table('shan24')->where('xiang',$xiang)->where('sanyuan',$sylong[2])->find();
+                $tag1 = $res['yinyang'];
+            }else{
+                $tag1=$sylong[3];
+            }
+
+            if($shan!=5){
+                //
+                $res = $zhwDB->table('shan24')->where('xiang',$shan)->where('sanyuan',$sylong[2])->find();
+                $tag2 = $res['yinyang'];
+            }else{
+                $tag2=$sylong[3];
+            }
+
+            if($tag1==1){
+                //顺飞
+                $xiangPan=$this->pan1($xiang,$basePan);
+            }else{
+                //逆飞
+                $xiangPan=$this->pan2($xiang,$basePan);
+            }
+
+            if($tag2==1){
+                //顺飞
+                $shanPan=$this->pan1($shan,$basePan);
+            }else{
+                //逆飞
+                $shanPan=$this->pan2($shan,$basePan);
+            }
+
+            $redata['year']=$yearPan;
+            $redata['xiang']=$xiangPan;
+            $redata['shan']=$shanPan;
+        }
+
+        $redata_json  = json_encode($redata);
+        return $redata_json;
+
     }
 
 }
