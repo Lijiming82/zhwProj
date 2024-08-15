@@ -452,11 +452,11 @@ class Zhwproj
             }
 
             $basePan = $this->mydir2($degree);//经过角度偏转的元旦盘
-            var_dump($basePan);
+            //var_dump($basePan);
             $sylong= $this->shan24($degree);//获取24山和三元龙信息，$sylong[0],$sylong[2]
-            var_dump($sylong);
+            //var_dump($sylong);
             $yearPan = $this->pan1($yfortune,$basePan);//年运顺飞排盘
-            var_dump($yearPan);
+            //var_dump($yearPan);
             $xiang = $yearPan['B'];
             $shan = $yearPan['F'];
 
