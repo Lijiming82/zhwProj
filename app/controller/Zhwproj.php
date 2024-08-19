@@ -431,10 +431,9 @@ class Zhwproj
         $openid = Request::header('x-wx-openid');
         $redata['code']=0;
         $inputdata = Request::post();
-
+        $zhwDB = Db::connect('zhwProjDB');
         
         if(!is_null($openid)){
-            $zhwDB = Db::connect('zhwProjDB');
             $redata['code']=1;
 
             //
@@ -496,6 +495,76 @@ class Zhwproj
             $redata['xiang']=$xiangPan;
             $redata['shan']=$shanPan;
         }
+
+        //飞星断吉凶，针对9运，9 1 2当令，查找每个方位子块的吉凶断语
+        $pwr = 9;
+        $pwr1 = 1;
+        $pwr2 = 2;//严格9 1 宽泛9 1 2
+        $myindx = ['B','C','D','E','F','G','H','I'];
+        $duanyu = [];
+        foreach ($myindx as $key => $value) {
+            if($redata['xiang'][$value]==$pwr){
+                //当 3
+                $res = $zhwDB->table('dangling')->where('xiang',$redata['xiang'][$value])->where('shan',$redata['shan'][$value])->find();
+                $duanyu[$value][0]['pwr']=3;
+                $duanyu[$value][0]['jx']=$res['jx'];
+                $duanyu[$value][0]['yw']=$res['yw'];
+                $duanyu[$value][0]['lq']=$res['lq'];
+                $duanyu[$value][0]['a']=$res['a'];
+                $duanyu[$value][0]['b']=$res['b'];
+                $duanyu[$value][0]['c']=$res['c'];
+                $duanyu[$value][0]['zs']=$res['zs'];
+                $duanyu[$value][0]['tag']=$res['tag'];
+            }elseif($redata['xiang'][$value]==$pwr1){
+                //当 2
+                $res = $zhwDB->table('dangling')->where('xiang',$redata['xiang'][$value])->where('shan',$redata['shan'][$value])->find();
+                $duanyu[$value][0]['pwr']=2;
+                $duanyu[$value][0]['jx']=$res['jx'];
+                $duanyu[$value][0]['yw']=$res['yw'];
+                $duanyu[$value][0]['lq']=$res['lq'];
+                $duanyu[$value][0]['a']=$res['a'];
+                $duanyu[$value][0]['b']=$res['b'];
+                $duanyu[$value][0]['c']=$res['c'];
+                $duanyu[$value][0]['zs']=$res['zs'];
+                $duanyu[$value][0]['tag']=$res['tag'];
+            }elseif($redata['xiang'][$value]==$pwr2){
+                //当 1 失 3
+                $res = $zhwDB->table('dangling')->where('xiang',$redata['xiang'][$value])->where('shan',$redata['shan'][$value])->find();
+                $duanyu[$value][0]['pwr']=1;
+                $duanyu[$value][0]['jx']=$res['jx'];
+                $duanyu[$value][0]['yw']=$res['yw'];
+                $duanyu[$value][0]['lq']=$res['lq'];
+                $duanyu[$value][0]['a']=$res['a'];
+                $duanyu[$value][0]['b']=$res['b'];
+                $duanyu[$value][0]['c']=$res['c'];
+                $duanyu[$value][0]['zs']=$res['zs'];
+                $duanyu[$value][0]['tag']=$res['tag'];
+
+                $res = $zhwDB->table('shiling')->where('xiang',$redata['xiang'][$value])->where('shan',$redata['shan'][$value])->find();
+                $duanyu[$value][1]['pwr']=3;
+                $duanyu[$value][1]['jx']=$res['jx'];
+                $duanyu[$value][1]['yw']=$res['yw'];
+                $duanyu[$value][1]['lq']=$res['lq'];
+                $duanyu[$value][1]['a']=$res['a'];
+                $duanyu[$value][1]['b']=$res['b'];
+                $duanyu[$value][1]['c']=$res['c'];
+                $duanyu[$value][1]['zs']=$res['zs'];
+                $duanyu[$value][1]['tag']=$res['tag'];
+            }else{
+                //失 3
+                $res = $zhwDB->table('shiling')->where('xiang',$redata['xiang'][$value])->where('shan',$redata['shan'][$value])->find();
+                $duanyu[$value][0]['pwr']=3;
+                $duanyu[$value][0]['jx']=$res['jx'];
+                $duanyu[$value][0]['yw']=$res['yw'];
+                $duanyu[$value][0]['lq']=$res['lq'];
+                $duanyu[$value][0]['a']=$res['a'];
+                $duanyu[$value][0]['b']=$res['b'];
+                $duanyu[$value][0]['c']=$res['c'];
+                $duanyu[$value][0]['zs']=$res['zs'];
+                $duanyu[$value][0]['tag']=$res['tag'];
+            }
+        }
+        $redata['duanyu']=$duanyu;
 
         $redata_json  = json_encode($redata);
         return $redata_json;
