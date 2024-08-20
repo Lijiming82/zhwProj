@@ -502,7 +502,30 @@ class Zhwproj
         $pwr2 = 2;//严格9 1 宽泛9 1 2
         $myindx = ['B','C','D','E','F','G','H','I'];
         $duanyu = [];
+        $seqSpecial = $zhwDB->table('special')->select('cmb');
+        var_dump($seqSpecial);//测试
+
         foreach ($myindx as $key => $value) {
+
+            $myseq = [$redata['shan'][$value],$redata['xiang'][$value],$redata['year'][$value]];
+            $myseq2 = 0;
+            sort($myseq);
+
+            var_dump($myseq);//测试
+
+            foreach($myseq as $idv){
+                $myseq2= $myseq2*10+$idv;
+            }
+            
+            var_dump($myseq2);//测试
+            if(in_array($myseq2,$seqSpecial)){
+                //存在匹配的情况
+                $res1= $zhwDB->table('special')->where('cmb',$myseq2)->find();
+                $duanyu[$value]['special']['jx']=$res1['jx'];
+                $duanyu[$value]['special']['yw']=$res1['yw'];
+                $duanyu[$value]['special']['dy']=$res1['dy'];
+            }
+
             if($redata['xiang'][$value]==$pwr){
                 //当 3
                 $res = $zhwDB->table('dangling')->where('xiang',$redata['xiang'][$value])->where('shan',$redata['shan'][$value])->find();
