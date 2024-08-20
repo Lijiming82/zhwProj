@@ -516,7 +516,7 @@ class Zhwproj
                 $myseq2= $myseq2*10+$idv;
             }
         
-            var_dump(in_array($myseq2,$seqSpecial));
+            var_dump(in_array($myseq2,$seqSpecial[0]));
             var_dump($myseq2);
 
             if(in_array($myseq2,$seqSpecial)){
