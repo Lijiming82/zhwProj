@@ -504,21 +504,21 @@ class Zhwproj
         $duanyu = [];
 
         $seqSpecial = $zhwDB->table('special')->field('cmb')->select()->toArray();
-        var_dump($seqSpecial);//测试
 
         foreach ($myindx as $key => $value) {
 
-            //$myseq = [$redata['shan'][$value],$redata['xiang'][$value],$redata['year'][$value]];
-            //$myseq2 = 0;
-            //sort($myseq);
+            $myseq = [$redata['shan'][$value],$redata['xiang'][$value],$redata['year'][$value]];
+            $myseq2 = 0;
+            sort($myseq);
 
-            //var_dump($myseq);//测试
+            var_dump($myseq);//测试
 
-            //foreach($myseq as $idv){
-            //    $myseq2= $myseq2*10+$idv;
-            //}
+            foreach($myseq as $idv){
+                $myseq2= $myseq2*10+$idv;
+            }
             
-            //var_dump($myseq2);//测试
+            var_dump($myseq2);//测试
+            
             //if(in_array($myseq2,$seqSpecial)){
                 //存在匹配的情况
             //    $res1= $zhwDB->table('special')->where('cmb',$myseq2)->find();
