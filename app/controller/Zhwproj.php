@@ -426,6 +426,15 @@ class Zhwproj
         return $redata_json;
     }
 
+    private inArrayCheck($val,$array,$key){
+        //
+        foreach($array as $item){
+            if($item[$key]==strval($val))
+                return true;
+        }
+        return false;
+    }
+
     public function fengshuiC(){
         //飞星断略，按照年运、向、山，分别飞星（含顺、逆飞），输出每个位置的数字
         $openid = Request::header('x-wx-openid');
@@ -516,7 +525,7 @@ class Zhwproj
                 $myseq2= $myseq2*10+$idv;
             }
         
-            var_dump(in_array($myseq2,$seqSpecial[0]));
+            var_dump(inArrayCheck($myseq2,$seqSpecial,'cmb'));
             var_dump($myseq2);
 
             if(in_array($myseq2,$seqSpecial)){
