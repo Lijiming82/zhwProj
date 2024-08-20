@@ -516,14 +516,15 @@ class Zhwproj
             }
         
             var_dump(in_array($myseq2,$seqSpecial));
-            
-            //if(in_array($myseq2,$seqSpecial)){
+
+            if(in_array($myseq2,$seqSpecial)){
                 //存在匹配的情况
+                var_dump($myseq2);
             //    $res1= $zhwDB->table('special')->where('cmb',$myseq2)->find();
             //    $duanyu[$value]['special']['jx']=$res1['jx'];
             //    $duanyu[$value]['special']['yw']=$res1['yw'];
             //    $duanyu[$value]['special']['dy']=$res1['dy'];
-            //}
+            }
 
             if($redata['xiang'][$value]==$pwr){
                 //当 3
