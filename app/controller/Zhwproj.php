@@ -426,7 +426,7 @@ class Zhwproj
         return $redata_json;
     }
 
-    private inArrayCheck($val,$array,$key){
+    private function inArrayCheck($val,$array,$key){
         //
         foreach($array as $item){
             if($item[$key]==strval($val))
