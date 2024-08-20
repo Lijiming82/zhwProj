@@ -525,15 +525,12 @@ class Zhwproj
                 $myseq2= $myseq2*10+$idv;
             }
         
-            var_dump($this->inArrayCheck($myseq2,$seqSpecial,'cmb'));
-            var_dump($myseq2);
-
             if($this->inArrayCheck($myseq2,$seqSpecial,'cmb')){
                 //存在匹配的情况
-            //    $res1= $zhwDB->table('special')->where('cmb',$myseq2)->find();
-            //    $duanyu[$value]['special']['jx']=$res1['jx'];
-            //    $duanyu[$value]['special']['yw']=$res1['yw'];
-            //    $duanyu[$value]['special']['dy']=$res1['dy'];
+                $res1= $zhwDB->table('special')->where('cmb',$myseq2)->find();
+                $duanyu[$value]['special']['jx']=$res1['jx'];
+                $duanyu[$value]['special']['yw']=$res1['yw'];
+                $duanyu[$value]['special']['dy']=$res1['dy'];
             }
 
             if($redata['xiang'][$value]==$pwr){
