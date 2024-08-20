@@ -509,7 +509,7 @@ class Zhwproj
         $pwr = 9;
         $pwr1 = 1;
         $pwr2 = 2;//严格9 1 宽泛9 1 2
-        $myindx = ['B','C','D','E','F','G','H','I'];
+        $myindx = ['Z','B','C','D','E','F','G','H','I'];
         $duanyu = [];
 
         $seqSpecial = $zhwDB->table('special')->field('cmb')->select()->toArray();
