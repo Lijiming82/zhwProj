@@ -503,7 +503,7 @@ class Zhwproj
         $myindx = ['B','C','D','E','F','G','H','I'];
         $duanyu = [];
 
-        $seqSpecial = $zhwDB->table('special')->select('cmb');
+        $seqSpecial = $zhwDB->table('special')->field('cmb')->select()->toArray();
         var_dump($seqSpecial);//测试
 
         foreach ($myindx as $key => $value) {
