@@ -368,7 +368,7 @@ class Zhwproj
         return $retdata;
     }
 
-    public function fengshuiA(){
+    public function wxminiappFengshuiA(){
         //紫白三元，财耀、魁星
         $openid = Request::header('x-wx-openid');
         $redata['code']=0;
@@ -394,7 +394,7 @@ class Zhwproj
         return $redata_json;
     }
 
-    public function fengshuiB(){
+    public function wxminiappFengshuiB(){
         //阳宅三要，生气、延年、天医、六煞、祸害、五鬼、绝命、伏位
         $openid = Request::header('x-wx-openid');
         $redata['code']=0;
@@ -435,7 +435,7 @@ class Zhwproj
         return false;
     }
 
-    public function fengshuiC(){
+    public function wxminiappFengshuiC(){
         //飞星断略，按照年运、向、山，分别飞星（含顺、逆飞），输出每个位置的数字
         $openid = Request::header('x-wx-openid');
         $redata['code']=0;
@@ -600,7 +600,7 @@ class Zhwproj
 
     }
 
-    public function translogs(){
+    public function wxminiappTranslogs(){
         //登记交易日志
         $openid = Request::header('x-wx-openid');
         $redata['code']=0;
