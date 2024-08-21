@@ -608,6 +608,8 @@ class Zhwproj
         $zhwDB = Db::connect('zhwProjDB');
         $logdata= [];
 
+        var_dump($inputdata);
+
         if(!is_null($openid)){
             $redata['code']=1;
             $logdata['openid'] = $openid;
@@ -619,7 +621,7 @@ class Zhwproj
             $logdata['timeindex']=$inputdata['timeIndex'];
 
             $res = $zhwDB->table('log')->insert($logdata);
-            
+
         }
 
         $redata_json  = json_encode($redata);
