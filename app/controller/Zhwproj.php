@@ -600,4 +600,29 @@ class Zhwproj
 
     }
 
+    public function translogs(){
+        //登记交易日志
+        $openid = Request::header('x-wx-openid');
+        $redata['code']=0;
+        $inputdata = Request::post();
+        $zhwDB = Db::connect('zhwProjDB');
+        $logdata= [];
+
+        if(!is_null($openid)){
+            $redata['code']=1;
+            $logdata['openid'] = $openid;
+            $logdata['timestamp'] = date('Ymd H:i:s');
+            $logdata['type']=$inputdata['type'];
+            $logdata['lvl']=$inputdata['lvl'];
+            $logdata['gtag']=$inputdata['glvltag'];
+            $logdata['degree']=$inputdata['degree'];
+            $logdata['timeindex']=$inputdata['timeIndex'];
+
+            $res = $zhwDB->table('log')->insert($logdata);
+            
+        }
+
+        $redata_json  = json_encode($redata);
+        return $redata_json; 
+    }
 }
