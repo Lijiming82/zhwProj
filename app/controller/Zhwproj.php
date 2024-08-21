@@ -608,8 +608,6 @@ class Zhwproj
         $zhwDB = Db::connect('zhwProjDB');
         $logdata= [];
 
-        var_dump($inputdata);
-
         if(!is_null($openid)){
             $redata['code']=1;
             $logdata['openid'] = $openid;
