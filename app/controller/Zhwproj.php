@@ -617,6 +617,8 @@ class Zhwproj
             $logdata['gtag']=$inputdata['glvltag'];
             $logdata['degree']=$inputdata['degree'];
             $logdata['timeindex']=$inputdata['timeIndex'];
+            $logdata['layout']=$inputdata['layout'];
+            $logdata['layoutind']=$inputdata['layoutind'];
 
             $res = $zhwDB->table('log')->insert($logdata);
 
