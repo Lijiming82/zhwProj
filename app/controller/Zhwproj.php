@@ -637,7 +637,7 @@ class Zhwproj
         if(!is_null($openid)){
 
             $res = $zhwDB->table('log')->field('timestamp,layout,layoutind,lvl,gtag,degree,timeindex')->where('openid',$openid)->order('timestamp','desc')->limit(25)->select();
-            var_dump($res);
+        
             $logdata = $res;
             $redata_json = json_encode($logdata);
             return $redata_json;
