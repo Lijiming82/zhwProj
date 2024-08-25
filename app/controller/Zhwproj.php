@@ -629,14 +629,14 @@ class Zhwproj
     }
 
     public function wxminiappGetlogs(){
-        //获取前25条记录
+        //获取前10条记录
         $openid = Request::header('x-wx-openid');
         $zhwDB = Db::connect('zhwProjDB');
         $logdata= [];
 
         if(!is_null($openid)){
 
-            $res = $zhwDB->table('log')->field('timestamp,layout,layoutind,lvl,gtag,degree,timeindex')->where('openid',$openid)->order('timestamp','desc')->limit(25)->select();
+            $res = $zhwDB->table('log')->field('timestamp,layout,layoutind,lvl,gtag,degree,timeindex')->where('openid',$openid)->order('timestamp','desc')->limit(10)->select();
         
             $logdata = $res;
             $redata_json = json_encode($logdata);
