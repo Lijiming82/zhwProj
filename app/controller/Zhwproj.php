@@ -80,6 +80,7 @@ class Zhwproj
 
         $res = $zhwDB->table('cusinfo')->where('openid',$openid)->update($updatedata);
         //$res = $zhwDB->table('cusinfo')->where('openid',$openid)->count();
+        var_dump($res);
 
         if($res ==1){//更新数据记录数 为1
             //更新成功
