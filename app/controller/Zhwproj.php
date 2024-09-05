@@ -78,7 +78,8 @@ class Zhwproj
         $zhwDB = Db::connect('zhwProjDB');
         $ret = array('code'=>1,'errmsg'=>'');//默认是成功及空串，1-成功，-1测试，其他失败
 
-        var_dump($updatedata);
+        //var_dump($updatedata);
+        var_dump(Request::post());
 
         //$res = $zhwDB->table('cusinfo')->where('openid',$openid)->update($updatedata);
         $res = $zhwDB->table('cusinfo')->where('openid',$openid)->count();
