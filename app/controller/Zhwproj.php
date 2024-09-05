@@ -82,7 +82,11 @@ class Zhwproj
         //$res = $zhwDB->table('cusinfo')->where('openid',$openid)->count();
         var_dump($res);
 
-        if($res ==1){//更新数据记录数 为1
+        if($res==false){
+            //
+            $ret['code']=201;
+            $ret['errmsg']='数据更新失败||'+$res;
+        }elseif($res ==1){//更新数据记录数 为1
             //更新成功
             $ret['code']=1;
             $ret['errmsg']='客户信息更新成功';
